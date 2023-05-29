@@ -12,11 +12,11 @@ import pygame.freetype
 from gymnasium import spaces
 from gymnasium.core import ActType, ObsType
 
-from minigrid.core.actions import Actions
-from minigrid.core.constants import COLOR_NAMES, DIR_TO_VEC, TILE_PIXELS
-from minigrid.core.grid import Grid
-from minigrid.core.mission import MissionSpace
-from minigrid.core.world_object import Point, WorldObj
+from core.actions import Actions
+from core.constants import COLOR_NAMES, DIR_TO_VEC, TILE_PIXELS
+from core.grid import Grid
+from core.mission import MissionSpace
+from core.world_object import Point, WorldObj
 
 T = TypeVar("T")
 
@@ -518,6 +518,7 @@ class MiniGridEnv(gym.Env):
     ) -> tuple[ObsType, SupportsFloat, bool, bool, dict[str, Any]]:
         self.step_count += 1
 
+        event = ""
         reward = 0
         terminated = False
         truncated = False
@@ -541,17 +542,21 @@ class MiniGridEnv(gym.Env):
         # Move forward
         elif action == self.actions.forward:
             if fwd_cell is None or fwd_cell.can_overlap():
+                if fwd_cell is not None and fwd_cell.type == "door":
+                    event = f"You are standing at the {fwd_cell.color} door"
                 self.agent_pos = tuple(fwd_pos)
             if fwd_cell is not None and fwd_cell.type == "goal":
-                terminated = True
+                # terminated = True
                 reward = self._reward()
             if fwd_cell is not None and fwd_cell.type == "lava":
+                event = "fell into lava"
                 terminated = True
 
         # Pick up an object
         elif action == self.actions.pickup:
             if fwd_cell and fwd_cell.can_pickup():
                 if self.carrying is None:
+                    event = f"picked up {fwd_cell.color} {fwd_cell.type}"
                     self.carrying = fwd_cell
                     self.carrying.cur_pos = np.array([-1, -1])
                     self.grid.set(fwd_pos[0], fwd_pos[1], None)
@@ -559,6 +564,7 @@ class MiniGridEnv(gym.Env):
         # Drop an object
         elif action == self.actions.drop:
             if not fwd_cell and self.carrying:
+                event = f"dropped {self.carrying.color} {self.carrying.type}"
                 self.grid.set(fwd_pos[0], fwd_pos[1], self.carrying)
                 self.carrying.cur_pos = fwd_pos
                 self.carrying = None
@@ -566,7 +572,9 @@ class MiniGridEnv(gym.Env):
         # Toggle/activate an object
         elif action == self.actions.toggle:
             if fwd_cell:
-                fwd_cell.toggle(self, fwd_pos)
+                tg = fwd_cell.toggle(self, fwd_pos)
+                if tg:
+                    event = f"toggled {fwd_cell.color} {fwd_cell.type}"
 
         # Done action (not used by default)
         elif action == self.actions.done:
@@ -575,6 +583,14 @@ class MiniGridEnv(gym.Env):
         else:
             raise ValueError(f"Unknown action: {action}")
 
+        # Get the position in front of the agent
+        fwd_pos = self.front_pos
+
+        # Get the contents of the cell in front of the agent
+        fwd_cell = self.grid.get(*fwd_pos)
+        if fwd_cell is not None:
+            event = f"you can see {fwd_cell.color} {fwd_cell.type} in front of you" if event == "" else event
+
         if self.step_count >= self.max_steps:
             truncated = True
 
@@ -582,6 +598,9 @@ class MiniGridEnv(gym.Env):
             self.render()
 
         obs = self.gen_obs()
+
+        if event != "":
+            print(event)
 
         return obs, reward, terminated, truncated, {}
 

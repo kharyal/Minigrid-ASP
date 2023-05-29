@@ -3,10 +3,10 @@ Copied and adapted from https://github.com/mila-iqia/babyai
 """
 from __future__ import annotations
 
-from minigrid.core.constants import COLOR_NAMES
-from minigrid.core.roomgrid import Room
-from minigrid.envs.babyai.core.roomgrid_level import RoomGridLevel
-from minigrid.envs.babyai.core.verifier import (
+from core.constants import COLOR_NAMES
+from core.roomgrid import Room
+from envs.babyai.core.roomgrid_level import RoomGridLevel
+from envs.babyai.core.verifier import (
     LOC_NAMES,
     OBJ_TYPES,
     OBJ_TYPES_NOT_DOOR,

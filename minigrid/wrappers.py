@@ -10,8 +10,8 @@ import numpy as np
 from gymnasium import logger, spaces
 from gymnasium.core import ObservationWrapper, ObsType, Wrapper
 
-from minigrid.core.constants import COLOR_TO_IDX, OBJECT_TO_IDX, STATE_TO_IDX
-from minigrid.core.world_object import Goal
+from core.constants import COLOR_TO_IDX, OBJECT_TO_IDX, STATE_TO_IDX
+from core.world_object import Goal
 
 
 class ReseedWrapper(Wrapper):
@@ -23,7 +23,7 @@ class ReseedWrapper(Wrapper):
     Example:
         >>> import minigrid
         >>> import gymnasium as gym
-        >>> from minigrid.wrappers import ReseedWrapper
+        >>> from wrappers import ReseedWrapper
         >>> env = gym.make("MiniGrid-Empty-5x5-v0")
         >>> _ = env.reset(seed=123)
         >>> [env.np_random.integers(10) for i in range(10)]
@@ -75,7 +75,7 @@ class ActionBonus(gym.Wrapper):
 
     Example:
         >>> import gymnasium as gym
-        >>> from minigrid.wrappers import ActionBonus
+        >>> from wrappers import ActionBonus
         >>> env = gym.make("MiniGrid-Empty-5x5-v0")
         >>> _, _ = env.reset(seed=0)
         >>> _, reward, _, _, _ = env.step(1)
@@ -135,7 +135,7 @@ class PositionBonus(Wrapper):
 
     Example:
         >>> import gymnasium as gym
-        >>> from minigrid.wrappers import PositionBonus
+        >>> from wrappers import PositionBonus
         >>> env = gym.make("MiniGrid-Empty-5x5-v0")
         >>> _, _ = env.reset(seed=0)
         >>> _, reward, _, _, _ = env.step(1)
@@ -193,7 +193,7 @@ class ImgObsWrapper(ObservationWrapper):
 
     Example:
         >>> import gymnasium as gym
-        >>> from minigrid.wrappers import ImgObsWrapper
+        >>> from wrappers import ImgObsWrapper
         >>> env = gym.make("MiniGrid-Empty-5x5-v0")
         >>> obs, _ = env.reset()
         >>> obs.keys()
@@ -224,7 +224,7 @@ class OneHotPartialObsWrapper(ObservationWrapper):
 
     Example:
         >>> import gymnasium as gym
-        >>> from minigrid.wrappers import OneHotPartialObsWrapper
+        >>> from wrappers import OneHotPartialObsWrapper
         >>> env = gym.make("MiniGrid-Empty-5x5-v0")
         >>> obs, _ = env.reset()
         >>> obs["image"][0, :, :]
@@ -295,7 +295,7 @@ class RGBImgObsWrapper(ObservationWrapper):
     Example:
         >>> import gymnasium as gym
         >>> import matplotlib.pyplot as plt
-        >>> from minigrid.wrappers import RGBImgObsWrapper
+        >>> from wrappers import RGBImgObsWrapper
         >>> env = gym.make("MiniGrid-Empty-5x5-v0")
         >>> obs, _ = env.reset()
         >>> plt.imshow(obs['image'])  # doctest: +SKIP
@@ -336,7 +336,7 @@ class RGBImgPartialObsWrapper(ObservationWrapper):
     Example:
         >>> import gymnasium as gym
         >>> import matplotlib.pyplot as plt
-        >>> from minigrid.wrappers import RGBImgObsWrapper, RGBImgPartialObsWrapper
+        >>> from wrappers import RGBImgObsWrapper, RGBImgPartialObsWrapper
         >>> env = gym.make("MiniGrid-LavaCrossingS11N5-v0")
         >>> obs, _ = env.reset()
         >>> plt.imshow(obs["image"])  # doctest: +SKIP
@@ -382,7 +382,7 @@ class FullyObsWrapper(ObservationWrapper):
     Example:
         >>> import gymnasium as gym
         >>> import matplotlib.pyplot as plt
-        >>> from minigrid.wrappers import FullyObsWrapper
+        >>> from wrappers import FullyObsWrapper
         >>> env = gym.make("MiniGrid-LavaCrossingS11N5-v0")
         >>> obs, _ = env.reset()
         >>> obs['image'].shape
@@ -427,7 +427,7 @@ class DictObservationSpaceWrapper(ObservationWrapper):
     Example:
         >>> import gymnasium as gym
         >>> import matplotlib.pyplot as plt
-        >>> from minigrid.wrappers import DictObservationSpaceWrapper
+        >>> from wrappers import DictObservationSpaceWrapper
         >>> env = gym.make("MiniGrid-LavaCrossingS11N5-v0")
         >>> obs, _ = env.reset()
         >>> obs['mission']
@@ -554,7 +554,7 @@ class FlatObsWrapper(ObservationWrapper):
     Example:
         >>> import gymnasium as gym
         >>> import matplotlib.pyplot as plt
-        >>> from minigrid.wrappers import FlatObsWrapper
+        >>> from wrappers import FlatObsWrapper
         >>> env = gym.make("MiniGrid-LavaCrossingS11N5-v0")
         >>> env_obs = FlatObsWrapper(env)
         >>> obs, _ = env_obs.reset()
@@ -624,7 +624,7 @@ class ViewSizeWrapper(ObservationWrapper):
 
     Example:
         >>> import gymnasium as gym
-        >>> from minigrid.wrappers import ViewSizeWrapper
+        >>> from wrappers import ViewSizeWrapper
         >>> env = gym.make("MiniGrid-LavaCrossingS11N5-v0")
         >>> obs, _ = env.reset()
         >>> obs['image'].shape
@@ -672,7 +672,7 @@ class DirectionObsWrapper(ObservationWrapper):
     Example:
         >>> import gymnasium as gym
         >>> import matplotlib.pyplot as plt
-        >>> from minigrid.wrappers import DirectionObsWrapper
+        >>> from wrappers import DirectionObsWrapper
         >>> env = gym.make("MiniGrid-LavaCrossingS11N5-v0")
         >>> env_obs = DirectionObsWrapper(env, type="slope")
         >>> obs, _ = env_obs.reset()
@@ -725,7 +725,7 @@ class SymbolicObsWrapper(ObservationWrapper):
 
     Example:
         >>> import gymnasium as gym
-        >>> from minigrid.wrappers import SymbolicObsWrapper
+        >>> from wrappers import SymbolicObsWrapper
         >>> env = gym.make("MiniGrid-LavaCrossingS11N5-v0")
         >>> obs, _ = env.reset()
         >>> obs['image'].shape

@@ -6,9 +6,10 @@ import gymnasium as gym
 import pygame
 from gymnasium import Env
 
-from minigrid.core.actions import Actions
-from minigrid.minigrid_env import MiniGridEnv
-from minigrid.wrappers import ImgObsWrapper, RGBImgPartialObsWrapper
+from core.actions import Actions
+from minigrid_env import MiniGridEnv
+from wrappers import ImgObsWrapper, RGBImgPartialObsWrapper
+from envs import multiroom, babyai
 
 
 class ManualControl:
@@ -120,14 +121,17 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    env: MiniGridEnv = gym.make(
-        args.env_id,
-        tile_size=args.tile_size,
-        render_mode="human",
-        agent_pov=args.agent_view,
-        agent_view_size=args.agent_view_size,
-        screen_size=args.screen_size,
-    )
+    # env: MiniGridEnv = gym.make(
+    #     args.env_id,
+    #     tile_size=args.tile_size,
+    #     render_mode="human",
+    #     agent_pov=args.agent_view,
+    #     agent_view_size=args.agent_view_size,
+    #     screen_size=args.screen_size,
+    # )
+
+    # env = multiroom.MultiRoomEnv(2,6, tile_size = args.tile_size, render_mode="human", agent_pov=args.agent_view, agent_view_size=args.agent_view_size, screen_size=args.screen_size)
+    env = babyai.Pickup(8, 100, tile_size = args.tile_size, render_mode="human", agent_pov=args.agent_view, agent_view_size=args.agent_view_size, screen_size=args.screen_size)
 
     # TODO: check if this can be removed
     if args.agent_view:

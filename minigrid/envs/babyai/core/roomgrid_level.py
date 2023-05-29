@@ -3,8 +3,8 @@ Copied and adapted from https://github.com/mila-iqia/babyai
 """
 from __future__ import annotations
 
-from minigrid.core.roomgrid import RoomGrid
-from minigrid.envs.babyai.core.verifier import (
+from core.roomgrid import RoomGrid
+from envs.babyai.core.verifier import (
     ActionInstr,
     AfterInstr,
     AndInstr,
@@ -12,7 +12,7 @@ from minigrid.envs.babyai.core.verifier import (
     PutNextInstr,
     SeqInstr,
 )
-from minigrid.minigrid_env import MissionSpace
+from minigrid_env import MissionSpace
 
 
 class RejectSampling(Exception):
@@ -91,14 +91,14 @@ class RoomGridLevel(RoomGrid):
             self.update_objs_poss()
 
         # If we've successfully completed the mission
-        status = self.instrs.verify(action)
+        # status = self.instrs.verify(action)
 
-        if status == "success":
-            terminated = True
-            reward = self._reward()
-        elif status == "failure":
-            terminated = True
-            reward = 0
+        # if status == "success":
+        #     terminated = True
+        #     reward = self._reward()
+        # elif status == "failure":
+        #     terminated = True
+        #     reward = 0
 
         return obs, reward, terminated, truncated, info
 

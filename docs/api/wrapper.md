@@ -25,7 +25,7 @@ use the `RGBImgPartialObsWrapper`. You can use it as follows:
 
 ```python
 import gymnasium as gym
-from minigrid.wrappers import RGBImgPartialObsWrapper, ImgObsWrapper
+from wrappers import RGBImgPartialObsWrapper, ImgObsWrapper
 
 env = gym.make('MiniGrid-Empty-8x8-v0')
 env = RGBImgPartialObsWrapper(env) # Get pixel observations

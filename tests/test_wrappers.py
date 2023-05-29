@@ -6,10 +6,10 @@ import gymnasium as gym
 import numpy as np
 import pytest
 
-from minigrid.core.actions import Actions
-from minigrid.core.constants import OBJECT_TO_IDX
-from minigrid.envs import EmptyEnv
-from minigrid.wrappers import (
+from core.actions import Actions
+from core.constants import OBJECT_TO_IDX
+from envs import EmptyEnv
+from wrappers import (
     ActionBonus,
     DictObservationSpaceWrapper,
     DirectionObsWrapper,

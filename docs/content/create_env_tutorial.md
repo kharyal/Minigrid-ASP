@@ -132,8 +132,8 @@ this goes over the grids with coordinates `(5, 0)`, `(5, 1)` ... `(5, height)` a
 To add keys and doors, we would first need to import
 
 ```python
-from minigrid.core.constants import COLOR_NAMES
-from minigrid.core.world_object import Door, Key
+from core.constants import COLOR_NAMES
+from core.world_object import Door, Key
 ```
 
 Then, we can simply place the door and key using the command
@@ -159,12 +159,12 @@ The source code of this tutorial is
 ```python
 from __future__ import annotations
 
-from minigrid.core.constants import COLOR_NAMES
-from minigrid.core.grid import Grid
-from minigrid.core.mission import MissionSpace
-from minigrid.core.world_object import Door, Goal, Key, Wall
-from minigrid.manual_control import ManualControl
-from minigrid.minigrid_env import MiniGridEnv
+from core.constants import COLOR_NAMES
+from core.grid import Grid
+from core.mission import MissionSpace
+from core.world_object import Door, Goal, Key, Wall
+from manual_control import ManualControl
+from minigrid_env import MiniGridEnv
 
 
 class SimpleEnv(MiniGridEnv):

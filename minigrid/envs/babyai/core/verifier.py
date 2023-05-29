@@ -8,8 +8,8 @@ from abc import ABC, abstractmethod
 
 import numpy as np
 
-from minigrid.core.constants import COLOR_NAMES, DIR_TO_VEC
-from minigrid.minigrid_env import MiniGridEnv
+from core.constants import COLOR_NAMES, DIR_TO_VEC
+from minigrid_env import MiniGridEnv
 
 # Object types we are allowed to describe in language
 OBJ_TYPES = ["box", "ball", "key", "door"]

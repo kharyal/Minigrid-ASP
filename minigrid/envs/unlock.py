@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from minigrid.core.mission import MissionSpace
-from minigrid.core.roomgrid import RoomGrid
+from core.mission import MissionSpace
+from core.roomgrid import RoomGrid
 
 
 class UnlockEnv(RoomGrid):

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from minigrid.envs.babyai.goto import (
+from envs.babyai.goto import (
     GoTo,
     GoToDoor,
     GoToImpUnlock,
@@ -13,29 +13,29 @@ from minigrid.envs.babyai.goto import (
     GoToRedBlueBall,
     GoToSeq,
 )
-from minigrid.envs.babyai.open import (
+from envs.babyai.open import (
     Open,
     OpenDoor,
     OpenDoorsOrder,
     OpenRedDoor,
     OpenTwoDoors,
 )
-from minigrid.envs.babyai.other import (
+from envs.babyai.other import (
     ActionObjDoor,
     FindObjS5,
     KeyCorridor,
     MoveTwoAcross,
     OneRoomS8,
 )
-from minigrid.envs.babyai.pickup import (
+from envs.babyai.pickup import (
     Pickup,
     PickupAbove,
     PickupDist,
     PickupLoc,
     UnblockPickup,
 )
-from minigrid.envs.babyai.putnext import PutNext, PutNextLocal
-from minigrid.envs.babyai.synth import (
+from envs.babyai.putnext import PutNext, PutNextLocal
+from envs.babyai.synth import (
     BossLevel,
     BossLevelNoUnlock,
     MiniBossLevel,
@@ -43,7 +43,7 @@ from minigrid.envs.babyai.synth import (
     SynthLoc,
     SynthSeq,
 )
-from minigrid.envs.babyai.unlock import (
+from envs.babyai.unlock import (
     BlockedUnlockPickup,
     KeyInBox,
     Unlock,

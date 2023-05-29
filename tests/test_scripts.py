@@ -4,9 +4,9 @@ import gymnasium as gym
 import numpy as np
 from pytest_mock import MockerFixture
 
-from minigrid.benchmark import benchmark
-from minigrid.manual_control import ManualControl
-from minigrid.minigrid_env import MiniGridEnv
+from benchmark import benchmark
+from manual_control import ManualControl
+from minigrid_env import MiniGridEnv
 
 
 def test_benchmark():

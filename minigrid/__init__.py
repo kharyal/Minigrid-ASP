@@ -3,8 +3,8 @@ from __future__ import annotations
 from gymnasium.envs.registration import register
 
 from minigrid import minigrid_env, wrappers
-from minigrid.core import roomgrid
-from minigrid.core.world_object import Wall
+from core import roomgrid
+from core.world_object import Wall
 
 __version__ = "2.2.1"
 
