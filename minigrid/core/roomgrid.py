@@ -436,3 +436,29 @@ class RoomGrid(MiniGridEnv):
             dists.append(dist)
 
         return dists
+    
+    def add_distractors_from_objs(
+        self,
+        objs: list[WorldObj],
+    ) -> bool:
+        """
+        Add random objects that can potentially distract/confuse the agent.
+        """
+
+        for obj in objs:
+            self.grid.set(obj.init_pos[0], obj.init_pos[1], obj)
+
+        return True
+
+    def add_door_from_list(
+        self,
+        doors: list[Door],
+    ) -> bool:
+        """
+        Add random objects that can potentially distract/confuse the agent.
+        """
+
+        for door in doors:
+            self.grid.set(door.cur_pos[0], door.cur_pos[1], door)
+
+        return True

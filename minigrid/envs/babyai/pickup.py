@@ -61,13 +61,29 @@ class Pickup(RoomGridLevel):
     - `BabyAI-Pickup-v0`
 
     """
+    def __init__(self, room_size=8, max_steps: int | None = None, **kwargs):
+        super().__init__(room_size, max_steps, **kwargs)
+        self.objs = None
+        self.teacher_pos = None
+        self.doors = None
 
     def gen_mission(self):
-        self.place_agent()
-        self.connect_all()
-        objs = self.add_distractors(num_distractors=18, all_unique=False)
-        self.check_objs_reachable()
-        obj = self._rand_elem(objs)
+        if self.teacher_pos is None:
+            self.teacher_pos =  self.place_agent()
+        else:
+            self.agent_pos = self.teacher_pos
+        if self.doors is None:
+            self.doors = self.connect_all()
+            print(self.doors)
+            print(self.doors[0].cur_pos)
+        else:
+            _ = self.add_door_from_list(self.doors)
+        if self.objs is None:
+            self.objs = self.add_distractors(num_distractors=18, all_unique=False)
+        else:
+            _ = self.add_distractors_from_objs(self.objs)
+        # self.check_objs_reachable()
+        obj = self._rand_elem(self.objs)
         self.instrs = PickupInstr(ObjDesc(obj.type, obj.color))
 
 

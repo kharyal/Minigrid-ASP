@@ -55,6 +55,7 @@ class RoomGridLevel(RoomGrid):
 
         # If `max_steps` arg is passed it will be fixed for every episode,
         # if not it will vary after reset depending on the maze size.
+        print("max_steps", max_steps)
         self.fixed_max_steps = False
         if max_steps is not None:
             self.fixed_max_steps = True

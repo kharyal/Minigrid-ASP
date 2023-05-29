@@ -131,7 +131,7 @@ if __name__ == "__main__":
     # )
 
     # env = multiroom.MultiRoomEnv(2,6, tile_size = args.tile_size, render_mode="human", agent_pov=args.agent_view, agent_view_size=args.agent_view_size, screen_size=args.screen_size)
-    env = babyai.Pickup(8, 100, tile_size = args.tile_size, render_mode="human", agent_pov=args.agent_view, agent_view_size=args.agent_view_size, screen_size=args.screen_size)
+    env = babyai.Pickup(8, 10, tile_size = args.tile_size, render_mode="human", agent_pov=args.agent_view, agent_view_size=args.agent_view_size, screen_size=args.screen_size)
 
     # TODO: check if this can be removed
     if args.agent_view:
