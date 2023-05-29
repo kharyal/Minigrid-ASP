@@ -7,6 +7,7 @@ from __future__ import annotations
 from envs.babyai.core.levelgen import LevelGen
 from envs.babyai.core.roomgrid_level import RejectSampling, RoomGridLevel
 from envs.babyai.core.verifier import ObjDesc, PickupInstr
+from copy import deepcopy
 
 
 class Pickup(RoomGridLevel):
@@ -65,23 +66,21 @@ class Pickup(RoomGridLevel):
         super().__init__(room_size, max_steps, **kwargs)
         self.objs = None
         self.teacher_pos = None
-        self.doors = None
+        self.doors_ = None
 
     def gen_mission(self):
         if self.teacher_pos is None:
-            self.teacher_pos =  self.place_agent()
+            self.teacher_pos =  deepcopy(self.place_agent())
         else:
             self.agent_pos = self.teacher_pos
-        if self.doors is None:
-            self.doors = self.connect_all()
-            print(self.doors)
-            print(self.doors[0].cur_pos)
+        if self.doors_ is None:
+            self.doors_ = deepcopy(self.connect_all())
         else:
-            _ = self.add_door_from_list(self.doors)
+            _ = self.add_door_from_list(deepcopy(self.doors_))
         if self.objs is None:
-            self.objs = self.add_distractors(num_distractors=18, all_unique=False)
+            self.objs = deepcopy(self.add_distractors(num_distractors=18, all_unique=False))
         else:
-            _ = self.add_distractors_from_objs(self.objs)
+            _ = self.add_distractors_from_objs(deepcopy(self.objs))
         # self.check_objs_reachable()
         obj = self._rand_elem(self.objs)
         self.instrs = PickupInstr(ObjDesc(obj.type, obj.color))

@@ -459,6 +459,7 @@ class RoomGrid(MiniGridEnv):
         """
 
         for door in doors:
+            print(door.is_open)
             self.grid.set(door.cur_pos[0], door.cur_pos[1], door)
 
         return True
