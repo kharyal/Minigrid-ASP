@@ -3,8 +3,8 @@ from __future__ import annotations
 import gymnasium as gym
 import pytest
 
-from core.constants import COLOR_NAMES
-from core.world_object import Ball, Box
+from minigrid.core.constants import COLOR_NAMES
+from minigrid.core.world_object import Ball, Box
 
 TESTING_ENVS = [
     "MiniGrid-ObstructedMaze-2Dlhb",

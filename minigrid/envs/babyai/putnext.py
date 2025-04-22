@@ -4,8 +4,8 @@ Levels described in the Baby AI ICLR 2019 submission, with the `Put Next` instru
 """
 from __future__ import annotations
 
-from envs.babyai.core.roomgrid_level import RoomGridLevel
-from envs.babyai.core.verifier import ObjDesc, PutNextInstr
+from minigrid.envs.babyai.core.roomgrid_level import RoomGridLevel
+from minigrid.envs.babyai.core.verifier import ObjDesc, PutNextInstr
 
 
 class PutNextLocal(RoomGridLevel):

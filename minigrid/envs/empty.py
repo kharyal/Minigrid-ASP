@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from core.grid import Grid
-from core.mission import MissionSpace
-from core.world_object import Goal
-from minigrid_env import MiniGridEnv
+from minigrid.core.grid import Grid
+from minigrid.core.mission import MissionSpace
+from minigrid.core.world_object import Goal
+from minigrid.minigrid_env import MiniGridEnv
 
 
 class EmptyEnv(MiniGridEnv):

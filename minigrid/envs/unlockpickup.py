@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from core.constants import COLOR_NAMES
-from core.mission import MissionSpace
-from core.roomgrid import RoomGrid
+from minigrid.core.constants import COLOR_NAMES
+from minigrid.core.mission import MissionSpace
+from minigrid.core.roomgrid import RoomGrid
 
 
 class UnlockPickupEnv(RoomGrid):

@@ -1,27 +1,27 @@
 from __future__ import annotations
 
-from envs.blockedunlockpickup import BlockedUnlockPickupEnv
-from envs.crossing import CrossingEnv
-from envs.distshift import DistShiftEnv
-from envs.doorkey import DoorKeyEnv
-from envs.dynamicobstacles import DynamicObstaclesEnv
-from envs.empty import EmptyEnv
-from envs.fetch import FetchEnv
-from envs.fourrooms import FourRoomsEnv
-from envs.gotodoor import GoToDoorEnv
-from envs.gotoobject import GoToObjectEnv
-from envs.keycorridor import KeyCorridorEnv
-from envs.lavagap import LavaGapEnv
-from envs.lockedroom import LockedRoom, LockedRoomEnv
-from envs.memory import MemoryEnv
-from envs.multiroom import MultiRoom, MultiRoomEnv
-from envs.obstructedmaze import (
+from minigrid.envs.blockedunlockpickup import BlockedUnlockPickupEnv
+from minigrid.envs.crossing import CrossingEnv
+from minigrid.envs.distshift import DistShiftEnv
+from minigrid.envs.doorkey import DoorKeyEnv
+from minigrid.envs.dynamicobstacles import DynamicObstaclesEnv
+from minigrid.envs.empty import EmptyEnv
+from minigrid.envs.fetch import FetchEnv
+from minigrid.envs.fourrooms import FourRoomsEnv
+from minigrid.envs.gotodoor import GoToDoorEnv
+from minigrid.envs.gotoobject import GoToObjectEnv
+from minigrid.envs.keycorridor import KeyCorridorEnv
+from minigrid.envs.lavagap import LavaGapEnv
+from minigrid.envs.lockedroom import LockedRoom, LockedRoomEnv
+from minigrid.envs.memory import MemoryEnv
+from minigrid.envs.multiroom import MultiRoom, MultiRoomEnv
+from minigrid.envs.obstructedmaze import (
     ObstructedMaze_1Dlhb,
     ObstructedMaze_Full,
     ObstructedMazeEnv,
 )
-from envs.playground import PlaygroundEnv
-from envs.putnear import PutNearEnv
-from envs.redbluedoors import RedBlueDoorEnv
-from envs.unlock import UnlockEnv
-from envs.unlockpickup import UnlockPickupEnv
+from minigrid.envs.playground import PlaygroundEnv
+from minigrid.envs.putnear import PutNearEnv
+from minigrid.envs.redbluedoors import RedBlueDoorEnv
+from minigrid.envs.unlock import UnlockEnv
+from minigrid.envs.unlockpickup import UnlockPickupEnv

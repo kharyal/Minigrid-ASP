@@ -6,10 +6,10 @@ import gymnasium as gym
 import pygame
 from gymnasium import Env
 
-from core.actions import Actions
-from minigrid_env import MiniGridEnv
-from wrappers import ImgObsWrapper, RGBImgPartialObsWrapper
-from envs import multiroom, babyai
+from minigrid.core.actions import Actions
+from minigrid.minigrid_env import MiniGridEnv
+from minigrid.wrappers import ImgObsWrapper, RGBImgPartialObsWrapper
+from minigrid.envs import multiroom, babyai
 
 
 class ManualControl:
@@ -36,7 +36,9 @@ class ManualControl:
                     self.key_handler(event)
 
     def step(self, action: Actions):
-        _, reward, terminated, truncated, _ = self.env.step(action)
+        obs, reward, terminated, truncated, _ = self.env.step(action)
+        print(obs["image"].shape)
+        
         print(f"step={self.env.step_count}, reward={reward:.2f}")
 
         if terminated:

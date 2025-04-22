@@ -3,8 +3,8 @@ Copied and adapted from https://github.com/mila-iqia/babyai
 """
 from __future__ import annotations
 
-from core.roomgrid import RoomGrid
-from envs.babyai.core.verifier import (
+from minigrid.core.roomgrid import RoomGrid
+from minigrid.envs.babyai.core.verifier import (
     ActionInstr,
     AfterInstr,
     AndInstr,
@@ -12,7 +12,7 @@ from envs.babyai.core.verifier import (
     PutNextInstr,
     SeqInstr,
 )
-from minigrid_env import MissionSpace
+from minigrid.minigrid_env import MissionSpace
 
 
 class RejectSampling(Exception):

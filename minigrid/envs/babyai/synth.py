@@ -6,7 +6,7 @@ The instructions are a synthesis of those from `PutNext`, `Open`, `GoTo`, and `P
 
 from __future__ import annotations
 
-from envs.babyai.core.levelgen import LevelGen
+from minigrid.envs.babyai.core.levelgen import LevelGen
 
 
 class Synth(LevelGen):

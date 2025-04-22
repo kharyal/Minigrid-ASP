@@ -4,9 +4,9 @@ Levels described in the Baby AI ICLR 2019 submission, with the `Pick up` instruc
 """
 from __future__ import annotations
 
-from envs.babyai.core.levelgen import LevelGen
-from envs.babyai.core.roomgrid_level import RejectSampling, RoomGridLevel
-from envs.babyai.core.verifier import ObjDesc, PickupInstr
+from minigrid.envs.babyai.core.levelgen import LevelGen
+from minigrid.envs.babyai.core.roomgrid_level import RejectSampling, RoomGridLevel
+from minigrid.envs.babyai.core.verifier import ObjDesc, PickupInstr
 from copy import deepcopy
 
 
@@ -71,8 +71,10 @@ class Pickup(RoomGridLevel):
     def gen_mission(self):
         if self.teacher_pos is None:
             self.teacher_pos =  deepcopy(self.place_agent())
+            self.teacher_direction = self.agent_dir
         else:
             self.agent_pos = self.teacher_pos
+            self.agent_dir = self.teacher_direction
         if self.doors_ is None:
             self.doors_ = deepcopy(self.connect_all())
         else:

@@ -12,11 +12,11 @@ import pygame.freetype
 from gymnasium import spaces
 from gymnasium.core import ActType, ObsType
 
-from core.actions import Actions
-from core.constants import COLOR_NAMES, DIR_TO_VEC, TILE_PIXELS
-from core.grid import Grid
-from core.mission import MissionSpace
-from core.world_object import Point, WorldObj
+from minigrid.core.actions import Actions
+from minigrid.core.constants import COLOR_NAMES, DIR_TO_VEC, TILE_PIXELS
+from minigrid.core.grid import Grid
+from minigrid.core.mission import MissionSpace
+from minigrid.core.world_object import Point, WorldObj
 
 T = TypeVar("T")
 
@@ -115,6 +115,7 @@ class MiniGridEnv(gym.Env):
         self.highlight = highlight
         self.tile_size = tile_size
         self.agent_pov = agent_pov
+        self.last_event = ""
 
     def reset(
         self,
@@ -601,8 +602,10 @@ class MiniGridEnv(gym.Env):
 
         if event != "":
             print(event)
+        
+        self.last_event = event
 
-        return obs, reward, terminated, truncated, {}
+        return obs, reward, terminated, truncated, {"event": event}
 
     def gen_obs_grid(self, agent_view_size=None):
         """
@@ -779,7 +782,7 @@ class MiniGridEnv(gym.Env):
             bg = pygame.transform.smoothscale(bg, (self.screen_size, self.screen_size))
 
             font_size = 22
-            text = self.mission
+            text = self.last_event
             font = pygame.freetype.SysFont(pygame.font.get_default_font(), font_size)
             text_rect = font.get_rect(text, size=font_size)
             text_rect.center = bg.get_rect().center
