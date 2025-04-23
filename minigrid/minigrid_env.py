@@ -17,6 +17,8 @@ from minigrid.core.constants import COLOR_NAMES, DIR_TO_VEC, TILE_PIXELS
 from minigrid.core.grid import Grid
 from minigrid.core.mission import MissionSpace
 from minigrid.core.world_object import Point, WorldObj
+import matplotlib.pyplot as plt
+
 
 T = TypeVar("T")
 
@@ -38,7 +40,7 @@ class MiniGridEnv(gym.Env):
         width: int | None = None,
         height: int | None = None,
         max_steps: int = 100,
-        see_through_walls: bool = False,
+        see_through_walls: bool = True,
         agent_view_size: int = 7,
         render_mode: str | None = None,
         screen_size: int | None = 640,
@@ -116,6 +118,7 @@ class MiniGridEnv(gym.Env):
         self.tile_size = tile_size
         self.agent_pov = agent_pov
         self.last_event = ""
+        self.fig, self.ax = plt.subplots()
 
     def reset(
         self,
@@ -149,8 +152,8 @@ class MiniGridEnv(gym.Env):
         # Step count since episode start
         self.step_count = 0
 
-        if self.render_mode == "human":
-            self.render()
+        # if self.render_mode == "human":
+        #     self.render()
 
         # Return first observation
         obs = self.gen_obs()
@@ -595,13 +598,17 @@ class MiniGridEnv(gym.Env):
         if self.step_count >= self.max_steps:
             truncated = True
 
-        if self.render_mode == "human":
-            self.render()
+        # if self.render_mode == "human":
+        #     self.render()
 
         obs = self.gen_obs()
 
-        if event != "":
-            print(event)
+        # self.fig, self.ax = plt.subplots()
+        # self.ax.imshow(obs["image"] / np.max(obs["image"]))
+        # plt.show()
+
+        # if event != "":
+        #     print(event)
         
         self.last_event = event
 

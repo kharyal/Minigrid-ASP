@@ -70,7 +70,7 @@ class Pickup(RoomGridLevel):
 
     def gen_mission(self):
         if self.teacher_pos is None:
-            self.teacher_pos =  deepcopy(self.place_agent())
+            self.teacher_pos =  deepcopy(self.place_agent(rand_dir=True))
             self.teacher_direction = self.agent_dir
         else:
             self.agent_pos = self.teacher_pos

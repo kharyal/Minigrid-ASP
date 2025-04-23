@@ -10,6 +10,8 @@ from minigrid.core.actions import Actions
 from minigrid.minigrid_env import MiniGridEnv
 from minigrid.wrappers import ImgObsWrapper, RGBImgPartialObsWrapper
 from minigrid.envs import multiroom, babyai
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 class ManualControl:
@@ -26,6 +28,8 @@ class ManualControl:
         """Start the window display with blocking event loop"""
         self.reset(self.seed)
 
+        # self.f, self.ax = plt.subplots()
+
         while not self.closed:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -37,7 +41,10 @@ class ManualControl:
 
     def step(self, action: Actions):
         obs, reward, terminated, truncated, _ = self.env.step(action)
-        print(obs["image"].shape)
+        # self.ax.imshow(obs["image"]/np.max(obs["image"]))
+        # plt.pause(0.01)
+        # self.ax.cla()
+
         
         print(f"step={self.env.step_count}, reward={reward:.2f}")
 
@@ -56,7 +63,7 @@ class ManualControl:
 
     def key_handler(self, event):
         key: str = event.key
-        print("pressed", key)
+        # print("pressed", key)
 
         if key == "escape":
             self.env.close()
@@ -70,8 +77,8 @@ class ManualControl:
             "right": Actions.right,
             "up": Actions.forward,
             "space": Actions.toggle,
-            "pageup": Actions.pickup,
-            "pagedown": Actions.drop,
+            "q": Actions.pickup,
+            "w": Actions.drop,
             "tab": Actions.pickup,
             "left shift": Actions.drop,
             "enter": Actions.done,
