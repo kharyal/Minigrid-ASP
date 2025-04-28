@@ -12,7 +12,7 @@ import numpy as np
 
 
 class PickupOneRoomEnv(MiniGridEnv):
-    def __init__(self, max_steps=35, size = 10, agent_view_size=15, **kwargs):
+    def __init__(self, max_steps=35, size = 15, agent_view_size=25, **kwargs):
         mission_space = MissionSpace(mission_func=self._gen_mission)
         self.size = size
         super().__init__(
